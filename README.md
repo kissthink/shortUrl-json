@@ -7,7 +7,7 @@ http://buy.woc.moe/j.php?u=https%3a%2f%2facger.moe%2f
 u 后面为url编码的链接
 
 # 示例 - 跳转
-http://buy.woc.moe/j.php?c=aLBfNy/v-E
+http://buy.woc.moe/j.php?c=35BXVbE9Cx
 
 c 后面的为短链接code
 
