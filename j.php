@@ -54,9 +54,8 @@ if(!$jumpUrl && $u)
 {
     $rCode = getRandomString(10);
     $shortUrl = fopen($fileName, "w") or die("Unable to open file!");
-    $fileData = preg_replace('/\}\]\}/','},{"url":"'.$u.'","code":"'.$rCode.'","rtime":"'.time().'"}]}',$fileData);
-    $txt = $fileData;
-    fwrite($shortUrl,$txt);
+    $fileData = str_replace('}]}','},{"url":"'.$u.'","code":"'.$rCode.'","rtime":"'.time().'"}]}',$fileData);
+    fwrite($shortUrl,$fileData);
     fclose($shortUrl);
     echo logE($rUrl.$rCode);
 }
