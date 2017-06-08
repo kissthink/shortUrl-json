@@ -22,7 +22,6 @@ if(!$fileData)
     return;
 }
 
-
 $json = json_decode($fileData);
 $data = $json -> urlData;
 for($i=0;$i<count($data);$i++)
@@ -33,9 +32,16 @@ for($i=0;$i<count($data);$i++)
     $interval = time() - $urlTime;
     if($interval > $timeOut)
     {
-        //echo "del:".$urlLong,$urlCode,$urlTime,"<br />";
+        //echo "del:".$urlLong,$urlCode,$urlTime," ",strpos($urlLong, "acger"),"<br />";
         $shortUrl = fopen($fileName, "w") or die("Unable to open file!");
-        $fileData = str_replace('{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.$urlTime.'"},','',$fileData);
+        if(strpos($urlLong, "kw") > 0 || strpos($urlLong, "acger") > 0)
+        {
+            $fileData = str_replace('{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.$urlTime.'"},','{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.time().'"}',$fileData);
+        }
+        else
+        {
+            $fileData = str_replace('{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.$urlTime.'"},','',$fileData);
+        }
         fwrite($shortUrl,$fileData);
     }
 
@@ -48,7 +54,6 @@ for($i=0;$i<count($data);$i++)
     }
 }
 fclose($shortUrl);
-
 //跳转链接不存在写入
 if(!$jumpUrl && $u)
 {
@@ -71,7 +76,6 @@ else
 {
     echo '<script>window.location.href = "http://'.$host.'/";</script>';
 }
-
 function getRandomString($len, $chars=null)
 {
     if (is_null($chars))
