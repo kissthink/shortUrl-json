@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 $jumpUrl = "";
 $timeOut = 3600 * 24 * 7;
 $fileName = "shortUrl.json";
