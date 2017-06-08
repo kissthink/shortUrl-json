@@ -34,13 +34,14 @@ for($i=0;$i<count($data);$i++)
     {
         //echo "del:".$urlLong,$urlCode,$urlTime," ",strpos($urlLong, "acger"),"<br />";
         $shortUrl = fopen($fileName, "w") or die("Unable to open file!");
+        $url = '{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.$urlTime.'"},';
         if(strpos($urlLong, "kw") > 0 || strpos($urlLong, "acger") > 0)
         {
-            $fileData = str_replace('{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.$urlTime.'"},','{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.time().'"}',$fileData);
+            $fileData = str_replace($url,'{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.time().'"}',$fileData);
         }
         else
         {
-            $fileData = str_replace('{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.$urlTime.'"},','',$fileData);
+            $fileData = str_replace($url,'',$fileData);
         }
         fwrite($shortUrl,$fileData);
     }
