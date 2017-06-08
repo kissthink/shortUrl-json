@@ -37,7 +37,7 @@ for($i=0;$i<count($data);$i++)
         $url = '{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.$urlTime.'"},';
         if(strpos($urlLong, "kw") > 0 || strpos($urlLong, "acger") > 0)
         {
-            $fileData = str_replace($url,'{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.time().'"}',$fileData);
+            $fileData = str_replace($url,'{"url":"'.$urlLong.'","code":"'.$urlCode.'","rtime":"'.time().'"},',$fileData);
         }
         else
         {
