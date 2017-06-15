@@ -71,11 +71,11 @@ elseif(!$c && $jumpCode)
 }
 elseif($c && $jumpUrl && $interval < $timeOut || strpos($jumpUrl, "kw") > 0 || strpos($jumpUrl, "acger") > 0)
 {
-    echo '<script>window.location.href = "'.$jumpUrl.'";</script>';
+    header("location:{$jumpUrl}");
 }
 else
 {
-    echo '<script>window.location.href = "http://'.$host.'/";</script>';
+    header("location:http://{$host}/");
 }
 function getRandomString($len, $chars=null)
 {
